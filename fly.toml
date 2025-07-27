@@ -1,0 +1,44 @@
+app = "n8n-io"
+kill_timeout = "30s"
+primary_region = "nrt"
+
+[build]
+image = "lawrence2018/n8n:latest"
+
+[env]
+EXECUTIONS_DATA_MAX_AGE = "120"
+EXECUTIONS_DATA_PRUNE = "true"
+EXECUTIONS_DATA_PRUNE_MAX_COUNT = "10000"
+GENERIC_TIMEZONE = "Asia/Shanghai"
+N8N_DIAGNOSTICS_ENABLED = "false"
+N8N_HIRING_BANNER_ENABLED = "false"
+N8N_HOST = "n8n.lawrenceli.me"
+N8N_METRICS = "true"
+N8N_PORT = "8080"
+N8N_PROTOCOL = "https"
+QUEUE_HEALTH_CHECK_ACTIVE = "true"
+TINI_SUBREAPER = "true"
+TZ = "Asia/Shanghai"
+WEBHOOK_URL = "https://n8n.lawrenceli.me"
+
+[http_service]
+auto_start_machines = true
+auto_stop_machines = true
+force_https = true
+internal_port = 8_080
+min_machines_running = 1
+processes = ["app"]
+
+[http_service.concurrency]
+hard_limit = 100
+soft_limit = 50
+type = "connections"
+
+[[mounts]]
+destination = "/home/node/.n8n"
+source = "n8n_vol"
+
+[[vm]]
+cpu_kind = "shared"
+cpus = 1
+memory = "512mb"
