@@ -36,9 +36,9 @@ type = "connections"
 
 [[mounts]]
 destination = "/home/node/.n8n"
-source = "n8n_vol"
+source = "n8n_vol_1"
 
 [[vm]]
 cpu_kind = "shared"
 cpus = 1
-memory = "512mb"
+memory = "256mb"
