@@ -1,2 +1,2 @@
-FROM n8nio/n8n:1.114.0
+FROM n8nio/n8n:1.115.0
 MAINTAINER la3rence
